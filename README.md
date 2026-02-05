@@ -1,5 +1,9 @@
 # DrugR: Optimizing Molecular Drugs through LLM-based Explicit Reasoning
 
+
+Authors: Author1, Author1, Author1, Author2, Author2, Author3, Author2, Author1, Author2  
+Affiliations: 1 Institution, 2 Institution, 3 Institution
+
 Cite this: DOI: 00.0000/xxxxxxxxxx
 
 ## 📌 Overview
