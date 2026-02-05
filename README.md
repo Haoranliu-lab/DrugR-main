@@ -6,6 +6,9 @@
 [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Model-orange)](HF_MODEL_LINK)
 [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Dataset-orange)](HF_DATASET_LINK)
 
+Authors: Author1, Author1, Author1, Author2, Author2, Author3, Author2, Author1, Author2  
+Affiliations: 1 Institution, 2 Institution, 3 Institution
+
 
 ## 📌 Overview
 
