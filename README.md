@@ -1,10 +1,11 @@
 # DrugR: Optimizing Molecular Drugs through LLM-based Explicit Reasoning
 
 
-Authors: Author1, Author1, Author1, Author2, Author2, Author3, Author2, Author1, Author2  
-Affiliations: 1 Institution, 2 Institution, 3 Institution
+[![Paper](https://img.shields.io/badge/Paper-PDF-b31b1b)](PAPER_LINK)
+[![arXiv](https://img.shields.io/badge/arXiv-xxxx.xxxxx-b31b1b)](ARXIV_LINK)
+[![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Model-orange)](HF_MODEL_LINK)
+[![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Dataset-orange)](HF_DATASET_LINK)
 
-Cite this: DOI: 00.0000/xxxxxxxxxx
 
 ## 📌 Overview
 
