@@ -7,7 +7,7 @@
 [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Dataset-orange)](HF_DATASET_LINK)
 
 Haoran Liu,a Full Name,b‡ and Zheni Zeng∗b  
-Affiliations: a School of Biological Science and Medical Engineering, Beihang Advanced Innovation Center for Biomedical Engineering, Beihang University, Beijing 100191, China
+a School of Biological Science and Medical Engineering, Beihang Advanced Innovation Center for Biomedical Engineering, Beihang University, Beijing 100191, China
 
 
 ## 📌 Overview
