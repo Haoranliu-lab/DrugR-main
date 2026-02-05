@@ -1,15 +1,91 @@
-# DrugR - Optimizing Molecular Drugs with LLM-based Explicit Reasoning
+# DrugR: Optimizing Molecular Drugs through LLM-based Explicit Reasoning
 
 Cite this: DOI: 00.0000/xxxxxxxxxx
 
-DrugR is an LLM-based framework for molecular optimization that introduces explicit, step-by-step pharmacological reasoning into the generation process. It integrates domain-specific continual pretraining, supervised fine-tuning via reverse data engineering, and self-balanced multi-granular reinforcement learning to improve key ADMET properties while preserving structural similarity and target binding affinity.
+## 📌 Overview
 
-## Highlights
+DrugR is a large language model (LLM)-based framework for molecular drug optimization that introduces explicit, step-by-step pharmacological reasoning into the optimization process. Unlike prior implicit or black-box approaches, DrugR generates interpretable rationales for each molecular modification step, enabling reliable multi-objective optimization of drug-like molecules. DrugR focuses on improving key ADMET properties while preserving structural similarity and target-binding affinity, advancing toward automated and knowledge-driven drug discovery.
 
-- Explicit, interpretable reasoning traces for each optimization step.
-- Multi-stage training pipeline tailored for molecular tasks.
-- Evaluation utilities for OOD and property-focused assessments.
-- Open-source scripts for data processing, training, and generation.
+## 🧠 Motivation
+
+Molecular optimization is a fundamental yet challenging task in drug discovery due to:
+
+- Multi-objective complexity
+- Poor generalization across drug types
+- Lack of interpretability in decision-making
+
+Although large language models exhibit strong reasoning capabilities, general-domain LLMs lack molecular expertise, while domain-specific models often suffer from limited reasoning ability. DrugR bridges this gap by combining domain knowledge with explicit reasoning-driven optimization.
+
+## 🚀 Key Contributions
+
+- Explicit Pharmacological Reasoning: step-by-step reasoning chains for optimization.
+- LLM-based Optimization Framework: joint optimization of multiple properties.
+- Domain-Specific Continual Pretraining: injects molecular and drug knowledge.
+- Reverse Data Engineering for SFT: high-quality instruction-reasoning-output triples.
+- Self-Balanced Multi-Granular RL: multi-property optimization with similarity control.
+
+## 🧪 Task Definition
+
+Given:
+
+- An original drug molecule
+- Corresponding pharmacological properties
+
+DrugR generates:
+
+- A new optimized molecule (SMILES)
+
+Subject to:
+
+- Improvement in targeted ADMET properties
+- Structural fingerprint similarity >= 0.6
+- Preservation of functional consistency with the original molecule
+
+Current experiments focus on three small-molecule drug categories:
+
+- Anti-inflammatory
+- Antihypertensive
+- Hypoglycemic drugs
+
+## 🏗️ Framework Architecture
+
+DrugR consists of three main stages:
+
+1. Domain Continual Pretraining: injects molecular structure and pharmacology knowledge.
+2. Supervised Fine-Tuning (SFT): reverse-engineered optimization trajectories with explicit reasoning.
+3. Reinforcement Learning Optimization: self-balanced, multi-granular rewards for multiple objectives.
+
+This design enables comprehensive enhancement across multiple drug properties while maintaining molecular validity and similarity.
+
+## 📊 Experimental Results
+
+Experimental evaluations demonstrate that:
+
+- DrugR consistently improves multiple ADMET properties.
+- Structural similarity and target-binding affinity are preserved.
+- Explicit reasoning chains provide clear and actionable optimization rationales.
+
+These results highlight DrugR's effectiveness and interpretability compared to implicit or non-reasoning-based baselines.
+
+## 🔍 Interpretability and Reasoning
+
+A key advantage of DrugR is its explicit reasoning process, which:
+
+- Explains why each molecular modification is made
+- Links structural changes to pharmacological outcomes
+- Enables human-in-the-loop analysis and validation
+
+This makes DrugR suitable for scientific discovery workflows, not just black-box optimization.
+
+## 📦 Code and Checkpoints
+
+We open-source the following resources to support reproducibility and future research:
+
+- Training and inference code
+- Model checkpoints
+- Data preprocessing and evaluation scripts
+
+Repository: TBD
 
 ## Project Structure
 
@@ -38,14 +114,14 @@ pip install -r src/requirements.txt
 
 ### 2) Data Preparation
 
-- Split and validate chemistry datasets:
+Split and validate chemistry datasets:
 
 ```bash
 python src/split_chem_data.py --help
 python src/check_train_val_overlap.py --help
 ```
 
-- Build reverse data engineering inputs:
+Build reverse data engineering inputs:
 
 ```bash
 python src/prepare_reverse_engineering_input.py --help
