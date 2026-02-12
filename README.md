@@ -1,10 +1,8 @@
 # DrugR: Optimizing Molecular Drugs through LLM-based Explicit Reasoning
 
 
-[![Paper](https://img.shields.io/badge/Paper-PDF-b31b1b)](PAPER_LINK)
-[![arXiv](https://img.shields.io/badge/arXiv-xxxx.xxxxx-b31b1b)](ARXIV_LINK)
-[![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Model-orange)](HF_MODEL_LINK)
-[![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Dataset-orange)](HF_DATASET_LINK)
+[![Paper]([https://img.shields.io/badge/Paper-PDF-b31b1b)](https://arxiv.org/pdf/2602.08213)](PAPER_LINK)
+[![arXiv]([https://img.shields.io/badge/arXiv-xxxx.xxxxx-b31b1b](https://arxiv.org/abs/2602.08213))](ARXIV_LINK)
 
 Haoran Liu,a Full Name,b‡ and Zheni Zeng∗b  
 a School of Biological Science and Medical Engineering, Beihang Advanced Innovation Center for Biomedical Engineering, Beihang University, Beijing 100191, China
