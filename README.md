@@ -208,30 +208,41 @@ Below is an illustrative example of how DrugR outputs an optimized molecule toge
 **Input**
 - Drug type: `anti-inflammatory`
 - Original molecule (SMILES): `CC(=O)OC1=CC=CC=C1C(=O)O`
-- Targeted ADMET objectives: improve solubility, reduce toxicity
+- Original ADMET profile (example):
+  - Solubility: 0.42
+  - Toxicity: 0.31
+  - Permeability: 0.55
+  - Clearance: 0.28
 
 **Output (example format)**
 ```
 Optimized SMILES:
   CC(=O)OC1=CC=C(O)C=C1C(=O)O
-
-Similarity (fingerprint):
-  0.71  (>= 0.60 ✔)
-
-Predicted ADMET changes:
-  Solubility:   +0.18
-  Toxicity:     -0.12
-  Permeability: +0.05
-
-Docking (optional):
-  Binding affinity: preserved / improved
-
 Reasoning Chain:
 1. Added a hydroxyl substitution to enhance polarity and improve solubility.
 2. Preserved the core aromatic scaffold and carboxyl group to maintain functional consistency.
 3. Avoided high-risk substructures associated with toxicity while keeping similarity above threshold.
 ```
 
+
+**Evaluater (example format)**
+Similarity (fingerprint):
+  0.71  (>= 0.60 ✔)
+
+Predicted ADMET:
+  - Solubility: 0.48
+  - Toxicity: 0.36
+  - Permeability: 0.59
+  - Clearance: 0.32
+
+Docking (optional):
+  Binding affinity: -7.18
+Overall Optimization Score:0.15
+Target property F1 score :0.19
+reasoning LMS score:0.5270 
+reasoning richness:0.7411
+
+  
 **Notes**
 - The above output is a recommended interface format for readability and reproducibility.
 - If you are using your own evaluation pipeline, ensure the printed metrics at least include:
