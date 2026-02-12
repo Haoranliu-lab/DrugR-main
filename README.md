@@ -92,24 +92,36 @@ A key advantage of DrugR is its explicit reasoning process, which:
 
 This makes DrugR suitable for scientific discovery workflows, not just black-box optimization.
 
-## 📦 Code and Checkpoints
+## 📦 Code and Resources
 
 We open-source the following resources to support reproducibility and future research:
 
-- Training and inference code
-- Model checkpoints
-- Data preprocessing and evaluation scripts
+- Model architecture and training framework
+- Simulation and evaluation modules
+- Data processing pipelines
+- Inference scripts and utilities
 
-Repository: TBD
+The repository includes organized modules under:
 
-## Project Structure
+- `models/` — model implementation
+- `simulator/` — property evaluation and simulation components
+- `data/` — processed datasets and supporting files
 
-- `src/`: training, generation, evaluation, and data-prep scripts
-- `data/`: datasets and intermediate artifacts (local paths)
-- `figures/`: paper figures and visual assets
-- `eval_output/`, `output/`, `result/`: experiment outputs
-- `ChemDFM/`, `ExLLM/`, `ModelCenter/`: external components or integrations
-- `test/`: evaluation and sanity tests
+
+## 🗂️ Project Structure
+
+- `models/`  
+  Core implementation of DrugR, including model definitions and training utilities.
+
+- `simulator/`  
+  Modules for molecular property estimation, ADMET evaluation, and optimization simulation.
+
+- `data/`  
+  Processed datasets and auxiliary resources used in experiments.
+
+- `requirement.txt`  
+  Python dependencies for reproducing experiments.
+
 
 ## Quick Start
 
