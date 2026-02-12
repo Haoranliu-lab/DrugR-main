@@ -1,9 +1,5 @@
-#!/usr/bin/env python3
 
-# ⚠️ 重要：必须在导入任何库之前设置环境变量，否则 HuggingFace Datasets 会使用默认路径
 import os
-
-# 使用通用缓存目录，允许通过环境变量覆盖
 cache_dir = os.environ.get("HF_HOME", os.path.expanduser("~/.cache/huggingface"))
 tmp_dir = os.environ.get("TMPDIR", os.environ.get("TMP", os.path.expanduser("/tmp")))
 os.makedirs(cache_dir, exist_ok=True)
@@ -26,7 +22,7 @@ from typing import List, Optional, Literal
 import torch
 import tempfile
 
-# 强制设置 Python tempfile 模块的默认临时目录
+
 tempfile.tempdir = tmp_dir
 print(f"Python tempfile 默认目录设置为: {tempfile.gettempdir()}")
 
