@@ -4,6 +4,13 @@
 [![Paper](https://img.shields.io/badge/Paper-PDF-b31b1b)](https://arxiv.org/pdf/2602.08213.pdf)
 [![arXiv](https://img.shields.io/badge/arXiv-2602.08213-b31b1b)](https://arxiv.org/abs/2602.08213)
 
+### Authors
+
+Haoran Liu<sup>1</sup>,  Zheni Zeng<sup>2*</sup>,  Yukun Yan<sup>3</sup>,  Yuxuan Chen<sup>4</sup>,  Yunduo Xiao<sup>5</sup>
+
+<sup>1</sup> School of Biological Science and Medical Engineering,  Beihang Advanced Innovation Center for Biomedical Engineering,  Beihang University, Beijing 100191,China.  <sup>2</sup> Nanjing University.  <sup>3</sup> Tsinghua University.  
+<sup>4</sup> School of Electronic and Computer Engineering, Peking University, Shenzhen, China.
+<sup>5</sup> School of Computer Science and Engineering,  South China University of Technology, Guangzhou, China.
 
 ## 📌 Overview
 
