@@ -5,16 +5,6 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2602.08213-b31b1b)](https://arxiv.org/abs/2602.08213)
 
 
-### Authors
-
-Haoran Liu<sup>1</sup>,  Zheni Zeng<sup>2*</sup>,  Yukun Yan<sup>3</sup>,  Yuxuan Chen<sup>4</sup>,  Yunduo Xiao<sup>5</sup>
-
-<sup>1</sup> School of Biological Science and Medical Engineering,  Beihang Advanced Innovation Center for Biomedical Engineering,  Beihang University, Beijing 100191,China.  <sup>2</sup> Nanjing University.  <sup>3</sup> Tsinghua University.  
-<sup>4</sup> School of Electronic and Computer Engineering, Peking University, Shenzhen, China.
-<sup>5</sup> School of Computer Science and Engineering,  South China University of Technology, Guangzhou, China.
-
-
-
 ## 📌 Overview
 
 DrugR is a large language model (LLM)-based framework for molecular drug optimization that introduces explicit, step-by-step pharmacological reasoning into the optimization process. Unlike prior implicit or black-box approaches, DrugR generates interpretable rationales for each molecular modification step, enabling reliable multi-objective optimization of drug-like molecules. DrugR focuses on improving key ADMET properties while preserving structural similarity and target-binding affinity, advancing toward automated and knowledge-driven drug discovery.
