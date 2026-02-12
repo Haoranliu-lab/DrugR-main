@@ -110,110 +110,144 @@ The repository includes organized modules under:
 
 ## 🗂️ Project Structure
 
+- `data/`  
+  Training data, reasoning datasets, and evaluation inputs.
+
 - `models/`  
-  Core implementation of DrugR, including model definitions and training utilities.
+  Core implementation of DrugR, including:
+  - `swift_pretrain.py` — domain continual pretraining
+  - `swift_sft.py` — supervised fine-tuning with explicit reasoning
+  - `grpo_vllm.py` — reinforcement learning optimization
+  - `general_dataset.py` — dataset processing utilities
+  - `llm_test.py` — model inference testing
 
 - `simulator/`  
-  Modules for molecular property estimation, ADMET evaluation, and optimization simulation.
+  Evaluation and simulation modules:
+  - `admet_evaluater.py` — ADMET property evaluation
+  - `docking_evaluater.py` — molecular docking evaluation
+  - `lms_judge.py` — language model reasoning evaluation
+  - `reasoning_richness_evaluator.py` — reasoning quality assessment
 
-- `data/`  
-  Processed datasets and auxiliary resources used in experiments.
-
-- `requirement.txt`  
-  Python dependencies for reproducing experiments.
+- `requirements.txt`  
+  Dependency specification
 
 
-## Quick Start
 
-### 1) Environment
+## 🚀 Quick Start (Advanced)
+
+This section provides an end-to-end workflow covering environment setup, sanity check, three-stage training, and evaluation.
 
 ```bash
+# 1) Clone
+git clone  https://github.com/Haoranliu-lab/DrugR-main.git
+cd DrugR-main
+
+# 2) Environment
 python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements0517.txt
+source .venv/bin/activate  # macOS / Linux
+# .venv\Scripts\activate   # Windows
+pip install -r requirements.txt
+
+# 3) Sanity check (make sure the code can run)
+python -c "import torch; print('torch:', torch.__version__)"
+python models/llm_test.py --help || true
+
+# -------------------------
+# Stage 1: Domain Continual Pretraining
+# -------------------------
+python models/swift_pretrain.py --help
+# Example (replace with your real args):
+# python models/swift_pretrain.py \
+#   --data_path data/reasoning.jsonl \
+#   --output_dir checkpoints/pretrain
+
+# -------------------------
+# Stage 2: Supervised Fine-Tuning (SFT)
+# -------------------------
+python models/swift_sft.py --help
+# Example:
+# python models/swift_sft.py \
+#   --train_path data/reasoning.jsonl \
+#   --output_dir checkpoints/sft
+
+# -------------------------
+# Stage 3: Reinforcement Learning Optimization (GRPO)
+# -------------------------
+python models/grpo_vllm.py --help
+# Example:
+# python models/grpo_vllm.py \
+#   --policy_dir checkpoints/sft \
+#   --output_dir checkpoints/rl
+
+# -------------------------
+# Evaluation
+# -------------------------
+
+# ADMET evaluation
+python simulator/admet_evaluater.py --help
+# Example:
+# python simulator/admet_evaluater.py --smiles "CCO"
+
+# Docking evaluation
+python simulator/docking_evaluater.py --help
+# Example:
+# python simulator/docking_evaluater.py --smiles "CCO" --target YOUR_TARGET
+
+# Reasoning quality evaluation
+python simulator/reasoning_richness_evaluator.py --help
+# Example:
+# python simulator/reasoning_richness_evaluator.py --input data/open_question.json
 ```
 
-If you use the scripts under `src/`, install extra dependencies if needed:
+---
 
-```bash
-pip install -r src/requirements.txt
+### 🧪 Example I/O (Reasoning + Molecule + Evaluation)
+
+Below is an illustrative example of how DrugR outputs an optimized molecule together with an explicit reasoning chain and evaluation signals.
+
+**Input**
+- Drug type: `anti-inflammatory`
+- Original molecule (SMILES): `CC(=O)OC1=CC=CC=C1C(=O)O`
+- Targeted ADMET objectives: improve solubility, reduce toxicity
+
+**Output (example format)**
+```
+Optimized SMILES:
+  CC(=O)OC1=CC=C(O)C=C1C(=O)O
+
+Similarity (fingerprint):
+  0.71  (>= 0.60 ✔)
+
+Predicted ADMET changes:
+  Solubility:   +0.18
+  Toxicity:     -0.12
+  Permeability: +0.05
+
+Docking (optional):
+  Binding affinity: preserved / improved
+
+Reasoning Chain:
+1. Added a hydroxyl substitution to enhance polarity and improve solubility.
+2. Preserved the core aromatic scaffold and carboxyl group to maintain functional consistency.
+3. Avoided high-risk substructures associated with toxicity while keeping similarity above threshold.
 ```
 
-### 2) Data Preparation
-
-Split and validate chemistry datasets:
-
-```bash
-python src/split_chem_data.py --help
-python src/check_train_val_overlap.py --help
-```
-
-Build reverse data engineering inputs:
-
-```bash
-python src/prepare_reverse_engineering_input.py --help
-```
-
-See `src/REVERSE_DATA_ENGINEERING_README.md` and `src/HOW_TO_USE_PAPER_MATERIALS.md` for details.
-
-### 3) Training
-
-Common training entrypoints:
-
-```bash
-bash src/chem_split_training.sh
-bash src/mixed_chem_training.sh
-bash src/propellant_improved.sh
-```
-
-Guidance for addressing overfitting and selecting hyperparameters:
-
-- `chem_training_guide.md`
-
-### 4) Generation
-
-```bash
-python src/generate.py --help
-python src/generate_ood.py --help
-```
-
-### 5) Evaluation
-
-```bash
-python src/eval_chem_model.py --help
-bash src/evaluate_existing_checkpoint.sh
-```
-
-Binding energy evaluation notes:
-
-- `src/BINDING_ENERGY_EVALUATION_README.md`
-
-## Paper Materials
-
-This repository includes draft paper materials and latex sources:
-
-- `explicit_reasoning_dataset.tex`
-- `model_and_training_settings.tex`
-- `src/TRAINING_PIPELINE_PAPER.md`
-- `src/REVERSE_DATA_ENGINEERING_PAPER.md`
-
-## Reproducibility Notes
-
-- Use the provided scripts for consistent data splitting and validation.
-- Keep training and validation datasets strictly separated.
-- Adjust learning rate and steps as recommended in `chem_training_guide.md`.
+**Notes**
+- The above output is a recommended interface format for readability and reproducibility.
+- If you are using your own evaluation pipeline, ensure the printed metrics at least include:
+  similarity, targeted ADMET changes, and the reasoning chain.
 
 ## Citation
 
 ```bibtex
-@article{DrugR,
-  title = {DrugR: Optimizing Molecular Drugs with LLM-based Explicit Reasoning},
-  author = {Liu, Haoran and Full Name and Zeng, Zheni},
-  journal = {TBD},
-  year = {2025},
-  doi = {00.0000/xxxxxxxxxx}
+@article{liu2026DrugR,
+  title  = {DrugR: Optimizing Molecular Drugs through LLM‐based Explicit Reasoning},
+  author = {Haoran Liu and Zheni Zeng and Yukun Yan and Yuxuan Chen and Yunduo Xiao},
+  journal = {arXiv preprint arXiv:2602.08213},
+  year   = {2026},
+  url    = {https://arxiv.org/abs/2602.08213}
 }
-```
+
 
 ## License
 
