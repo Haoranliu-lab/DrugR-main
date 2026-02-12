@@ -242,7 +242,7 @@ Overall Optimization Score:0.15
 Target property F1 score :0.19
 reasoning LMS score:0.5270 
 reasoning richness:0.7411
-
+```
   
 **Notes**
 - The above output is a recommended interface format for readability and reproducibility.
@@ -259,7 +259,7 @@ reasoning richness:0.7411
   year   = {2026},
   url    = {https://arxiv.org/abs/2602.08213}
 }
-
+```
 
 ## License
 
