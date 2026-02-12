@@ -226,6 +226,7 @@ Reasoning Chain:
 
 
 **Evaluater (example format)**
+```
 Similarity (fingerprint):
   0.71  (>= 0.60 ✔)
 
